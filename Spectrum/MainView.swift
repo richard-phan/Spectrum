@@ -17,8 +17,10 @@ struct MainView: View {
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .edgesIgnoringSafeArea(.all)
+            
             VStack(spacing: 15) {
                 Text("Spectrum")
+                    .foregroundColor(Color.black)
                     .font(.custom("Noteworthy", size: 64))
                     .bold()
                     .padding(.bottom, 150)
@@ -35,13 +37,6 @@ struct MainView: View {
                 }) {
                     Text("Help")
                         .fontWeight(.light)
-                }.buttonStyle(HomeButton())
-                
-                Button(action: {
-                    self.page = 3
-                }) {
-                    Text("Settings")
-                    .fontWeight(.light)
                 }.buttonStyle(HomeButton())
             }
         }

@@ -4,7 +4,7 @@
 //
 //  Created by CSUFTitan on 3/3/20.
 //  Copyright © 2020 Richard Phan. All rights reserved.
-//
+// 050437
 
 import SwiftUI
 import AVFoundation
@@ -24,57 +24,97 @@ func playSound(sound: String, type: String) {
 
 struct GameView: View {
     @Binding var page: Int
-    
-    @State var timeRemaining = 60
-    @State var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-    @State var difficulty = 2
-    @State var score = 0
-    @State var colors = [RawColor(1.0, 0.0, 0.0), RawColor(0.0, 1.0, 0.0), RawColor(0.0, 0.0, 1.0)]
-    @State var indexes = [0, 0, 0, 1, 1, 1, 2, 2, 2].shuffled()
 
-    @State var choiceIndex = [0, 1, 2].shuffled()
-    
+//    let gameData = Bundle.main.decode("data")
+    @State private var timeRemaining = 60
+    @State private var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    @State private var difficulty = 2
+    @State private var score = 0
+//    @State private var highscore: Int!
+    @State private var colors = [RawColor(1.0, 0.0, 0.0), RawColor(0.0, 1.0, 0.0), RawColor(0.0, 0.0, 1.0)].shuffled()
+    @State private var indexes = [0, 0, 0, 1, 1, 1, 2, 2, 2].shuffled()
+    @State private var choiceIndex = [0, 1, 2].shuffled()
     @State private var choices = [RawColor]()
     
     var body: some View {
         return Group {
-            if self.timeRemaining == 0 {
-                VStack(spacing: 15) {
-                    Text("Score: \(score)")
-                        .font(.custom("Marker Felt", size: 25))
-                        .padding(.bottom, 50)
-                    
-                    Button(action: {
-                        self.timeRemaining = 60
-                        self.timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-                    }) {
-                        Text("Play again")
-                    }.buttonStyle(HomeButton())
-                    
-                    Button(action: {
-                        self.page = 0
-                    }) {
-                        Text("Home")
-                    }.buttonStyle(HomeButton())
-                }
-            } else {
+            if self.timeRemaining <= 0 {
                 ZStack {
-                    Color.white.edgesIgnoringSafeArea(.all)
-                    VStack {
+                    Image("bg")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .edgesIgnoringSafeArea(.all)
+                    
+                    VStack(spacing: 15) {
+                        Text("Score: \(score)")
+                            .foregroundColor(Color.black)
+                            .font(.custom("Marker Felt", size: 40))
+                            .padding(.bottom, 10)
+                        
+//                        Text("Highscore: \(self.highscore)")
+//                            .font(.custom("Marker Felt", size: 20))
+//                            .padding(.bottom, 50)
+                        
+                        Button(action: {
+                            self.timeRemaining = 60
+                            self.timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+                        }) {
+                            Text("Play again")
+                        }.buttonStyle(HomeButton())
+                        
                         Button(action: {
                             self.page = 0
                         }) {
-                            Image(systemName: "x.circle")
-                                .resizable()
-                                .frame(width: 25, height: 25)
-                        }
+                            Text("Home")
+                        }.buttonStyle(HomeButton())
+                    }
+                }
+            } else {
+                ZStack {
+                    Color(red: 82.4, green: 70.6, blue: 54.9)
+                        .edgesIgnoringSafeArea(.all)
+                    VStack {
+                        HStack() {
+                            Button(action: {
+                                self.page = 0
+                            }) {
+                                Image(systemName: "x.circle")
+                                    .resizable()
+                                    .frame(width: 30, height: 30)
+                                    .foregroundColor(Color.red)
+                                    .padding(.leading, 30)
+                            }
+                            
+                            Spacer()
+                            
+                            Text("Score: \(self.score)")
+                                .foregroundColor(Color.black)
+                                .font(.custom("Marker Felt", size: 24))
+                                .padding(.horizontal, 30)
+                        }.padding(.top, 30)
                         
-                        Text("Time remaining: \(timeRemaining)")
+                        Spacer()
+                        
+                        Text("Time: \(timeRemaining)")
+                            .foregroundColor(Color.black)
                             .font(.custom("Marker Felt", size: 30))
                             .onReceive(timer) { _ in
                                 if self.timeRemaining > 0 {
                                     self.timeRemaining -= 1
                                 }
+                                if self.timeRemaining <= 10 {
+                                    playSound(sound: "beep", type: "mp3")
+                                }
+                                
+//                                if self.timeRemaining == 0 {
+//                                    self.highscore = self.gameData.highscore
+//
+//                                    if self.score > self.highscore {
+//                                        self.highscore = self.score
+//                                        print("writing data")
+//                                        Bundle.main.encode("data", data: GameData(correct: self.gameData.correct, wrong: self.gameData.wrong, highscore: 69))
+//                                    }
+//                                }
                             }
                         
                         RoundedRectangle(cornerRadius: 15)
@@ -82,39 +122,40 @@ struct GameView: View {
                             .frame(width: 100, height: 100)
                         
                         HStack(spacing: 30) {
-                            if choices.count >= 1 {
-                                Button(action : {
+                            Button(action : {
+                                if (self.choices.count > 0) {
                                     self.choices.remove(at: 0)
-                                }) {
-                                    ColorCircle(color: rawToColor(choices[0]))
-                                }.buttonStyle(AnimatedButtonStyle())
-                            }
-                            else {
-                                ColorCircle(color: Color.white)
-                            }
-                            
-                            if choices.count >= 2 {
-                                Button(action: {
-                                    self.choices.remove(at: 1)
-                                }) {
-                                    ColorCircle(color: rawToColor(choices[1]))
-                                }.buttonStyle(AnimatedButtonStyle())
-                            }
-                            else {
-                                ColorCircle(color: Color.white)
-                            }
-                            
-                            if self.difficulty == 3 {
-                                if choices.count >= 3 {
-                                    Button(action: {
-                                        self.choices.remove(at: 2)
-                                    }) {
-                                        ColorCircle(color: rawToColor(choices[2]))
-                                    }.buttonStyle(AnimatedButtonStyle())
                                 }
-                                else {
+                            }) {
+                                if choices.count > 0 {
+                                    ColorCircle(color: rawToColor(choices[0]))
+                                } else {
                                     ColorCircle(color: Color.white)
                                 }
+                            }.buttonStyle(AnimatedButtonStyle())
+                            
+                            Button(action: {
+                                if self.choices.count > 1 {
+                                    self.choices.remove(at: 1)
+                                }
+                            }) {
+                                if choices.count > 1 {
+                                    ColorCircle(color: rawToColor(choices[1]))
+                                } else {
+                                    ColorCircle(color: Color.white)
+                                }
+                            }.buttonStyle(AnimatedButtonStyle())
+                            
+                            if self.difficulty == 3 {
+                                Button(action: {
+                                    self.choices.remove(at: 2)
+                                }) {
+                                    if choices.count > 2 {
+                                        ColorCircle(color: rawToColor(choices[2]))
+                                    } else {
+                                        ColorCircle(color: Color.white)
+                                    }
+                                }.buttonStyle(AnimatedButtonStyle())
                             }
                         }.padding(.top, 50)
                         
@@ -173,6 +214,7 @@ struct GameView: View {
                                     self.choiceIndex.shuffle()
                                 } else {
                                     playSound(sound: "wrong2", type: "mp3")
+                                    self.timeRemaining -= 5
                                 }
                                 self.choices.removeAll()
                             }) {
@@ -185,9 +227,7 @@ struct GameView: View {
                             }.disabled(choices.count < difficulty)
                         }.padding(.top, 50)
                         
-                        Text("Score: \(self.score)")
-                            .font(.custom("Marker Felt", size: 24))
-                            .padding(.top, 15)
+                        Spacer()
                     }
                 }
             }

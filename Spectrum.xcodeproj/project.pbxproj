@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7A08A63B24296B43005BD2F3 /* beep.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7A08A63A24296B43005BD2F3 /* beep.mp3 */; };
 		7A2E4A5D241C97A700464CE8 /* correct1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7A2E4A5A241C97A700464CE8 /* correct1.mp3 */; };
 		7A2E4A5E241C97A700464CE8 /* correct2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7A2E4A5B241C97A700464CE8 /* correct2.mp3 */; };
 		7A2E4A5F241C97A700464CE8 /* wrong1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7A2E4A5C241C97A700464CE8 /* wrong1.mp3 */; };
+		7A4B6563242FCF3F00167DD0 /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = 7A4B6562242FCF3F00167DD0 /* data.json */; };
 		7A971CA9240F4CDD006BA568 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A971CA8240F4CDD006BA568 /* AppDelegate.swift */; };
 		7A971CAB240F4CDD006BA568 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A971CAA240F4CDD006BA568 /* SceneDelegate.swift */; };
 		7A971CAD240F4CDD006BA568 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A971CAC240F4CDD006BA568 /* ContentView.swift */; };
@@ -22,7 +24,6 @@
 		7AADE93E2410769D00012259 /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AADE93D2410769D00012259 /* HelpView.swift */; };
 		7AADE940241079C900012259 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AADE93F241079C900012259 /* MainView.swift */; };
 		7AB155A7241D5CDC00CA48DC /* wrong2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7AB155A6241D5CDC00CA48DC /* wrong2.mp3 */; };
-		7AB221AA241735B700662C32 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB221A9241735B700662C32 /* SettingsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,9 +44,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7A08A63A24296B43005BD2F3 /* beep.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = beep.mp3; path = ../../../../../Downloads/beep.mp3; sourceTree = "<group>"; };
 		7A2E4A5A241C97A700464CE8 /* correct1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = correct1.mp3; sourceTree = "<group>"; };
 		7A2E4A5B241C97A700464CE8 /* correct2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = correct2.mp3; sourceTree = "<group>"; };
 		7A2E4A5C241C97A700464CE8 /* wrong1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = wrong1.mp3; sourceTree = "<group>"; };
+		7A4B6562242FCF3F00167DD0 /* data.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
 		7A971CA5240F4CDC006BA568 /* Spectrum.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spectrum.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A971CA8240F4CDD006BA568 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7A971CAA240F4CDD006BA568 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -65,7 +68,6 @@
 		7AADE93F241079C900012259 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		7AB155A4241D2C1C00CA48DC /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		7AB155A6241D5CDC00CA48DC /* wrong2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = wrong2.mp3; path = ../../../../../Downloads/wrong2.mp3; sourceTree = "<group>"; };
-		7AB221A9241735B700662C32 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 		7A2E4A62241C97EA00464CE8 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				7A08A63A24296B43005BD2F3 /* beep.mp3 */,
 				7A2E4A5A241C97A700464CE8 /* correct1.mp3 */,
 				7A2E4A5B241C97A700464CE8 /* correct2.mp3 */,
 				7A2E4A5C241C97A700464CE8 /* wrong1.mp3 */,
@@ -134,7 +137,7 @@
 				7AADE93F241079C900012259 /* MainView.swift */,
 				7A971CD8240F52EB006BA568 /* GameView.swift */,
 				7AADE93D2410769D00012259 /* HelpView.swift */,
-				7AB221A9241735B700662C32 /* SettingsView.swift */,
+				7A4B6562242FCF3F00167DD0 /* data.json */,
 				7A971CAE240F4CDF006BA568 /* Assets.xcassets */,
 				7A971CB3240F4CDF006BA568 /* LaunchScreen.storyboard */,
 				7A971CB6240F4CDF006BA568 /* Info.plist */,
@@ -285,9 +288,11 @@
 				7A2E4A5D241C97A700464CE8 /* correct1.mp3 in Resources */,
 				7AB155A7241D5CDC00CA48DC /* wrong2.mp3 in Resources */,
 				7A2E4A5E241C97A700464CE8 /* correct2.mp3 in Resources */,
+				7A08A63B24296B43005BD2F3 /* beep.mp3 in Resources */,
 				7A2E4A5F241C97A700464CE8 /* wrong1.mp3 in Resources */,
 				7A971CB5240F4CDF006BA568 /* LaunchScreen.storyboard in Resources */,
 				7A971CB2240F4CDF006BA568 /* Preview Assets.xcassets in Resources */,
+				7A4B6563242FCF3F00167DD0 /* data.json in Resources */,
 				7A971CAF240F4CDF006BA568 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -313,7 +318,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7AB221AA241735B700662C32 /* SettingsView.swift in Sources */,
 				7A971CA9240F4CDD006BA568 /* AppDelegate.swift in Sources */,
 				7AADE940241079C900012259 /* MainView.swift in Sources */,
 				7A971CAB240F4CDD006BA568 /* SceneDelegate.swift in Sources */,
@@ -398,6 +402,8 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -458,6 +464,8 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -484,8 +492,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "Spectrum/Preview\\ Content";
+				DEVELOPMENT_TEAM = 6LY2PZCK42;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Spectrum/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -503,8 +513,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "Spectrum/Preview\\ Content";
+				DEVELOPMENT_TEAM = 6LY2PZCK42;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Spectrum/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
